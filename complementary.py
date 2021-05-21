@@ -49,7 +49,7 @@ for palette in palettes:
 
 jo = {}
 jo["palettes"] = pals
-with open("palettes.json", "w") as f:
+with open("data/complementary.json", "w") as f:
 	json.dump(jo, f)
 
 

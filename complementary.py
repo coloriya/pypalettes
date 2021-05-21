@@ -13,10 +13,10 @@ def get_ngon_palettes(n):
 		base_hue = x * step
 		for color_index in range(0, n):
 			hue = base_hue + (jump * color_index)
-			c1 = [round(hue/360, 2), 0.55, 0.4]
-			c2 = [round(hue/360, 2), 0.55, 0.6]
-			c3 = [round(hue/360, 2), 0.85, 0.4]
-			c4 = [round(hue/360, 2), 0.85, 0.6]
+			c1 = [round(hue/360, 4), 0.4, 0.4]
+			c2 = [round(hue/360, 4), 0.4, 0.6]
+			c3 = [round(hue/360, 4), 0.6, 0.4]
+			c4 = [round(hue/360, 4), 0.6, 0.6]
 			palette.append(c1)
 			palette.append(c2)
 			palette.append(c3)
@@ -38,7 +38,10 @@ for palette in palettes:
 	pal["colors"] = []
 	for hsl_color in palette:
 		color = {}
-		color["hsl"] = hsl_color
+		h = int(hsl_color[0] * 360)
+		s = int(hsl_color[1] * 100)
+		l = int(hsl_color[2] * 100)
+		color["hsl"] = [h, s, l]
 		rgb = colorsys.hls_to_rgb(*hsl_color)
 		rgb = [int(e * 256) for e in rgb]
 		color["rgb"] = rgb

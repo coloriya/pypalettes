@@ -13,14 +13,11 @@ def get_ngon_palettes(n):
 		base_hue = x * step
 		for color_index in range(0, n):
 			hue = base_hue + (jump * color_index)
-			c1 = [round(hue/360, 4), 0.4, 0.4]
-			c2 = [round(hue/360, 4), 0.4, 0.6]
-			c3 = [round(hue/360, 4), 0.6, 0.4]
-			c4 = [round(hue/360, 4), 0.6, 0.6]
-			palette.append(c1)
-			palette.append(c2)
-			palette.append(c3)
-			palette.append(c4)
+			h = round(hue/360, 4)
+			for s in [0.4, 0.6]:
+				for l in [0.4, 0.6]:
+					c = [h, s, l]
+					palette.append(c)
 		#print(palette)
 		palettes.append(palette)
 	return palettes

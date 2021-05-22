@@ -2,24 +2,38 @@
 import colorsys
 import json
 
+s_pairs = [
+	[0.4, 0.6],
+	[0.6, 0.8],
+	[0.8, 0.4]
+]
+
+l_pairs = [
+	[0.2, 0.4],
+	[0.4, 0.6],
+	[0.6, 0.2]
+]
+
 def get_ngon_palettes(n):
 	palettes = []
 	max_base_hue = 360 / n
 	jump = 360 / n # jump between adjacent colors
-	step = 2 # a new palette every 4 degrees
+	step = 10 # a new palette every 10 degrees
 
 	for x in range(0, int(max_base_hue / step)):
-		palette = []
 		base_hue = x * step
-		for color_index in range(0, n):
-			hue = base_hue + (jump * color_index)
-			h = round(hue/360, 4)
-			for s in [0.4, 0.6]:
-				for l in [0.4, 0.6]:
-					c = [h, s, l]
-					palette.append(c)
-		#print(palette)
-		palettes.append(palette)
+		for s_pair in s_pairs:
+			for l_pair in l_pairs:
+				palette = []
+				for color_index in range(0, n):
+					hue = base_hue + (jump * color_index)
+					h = round(hue/360, 4)
+					for s in s_pair:
+						for l in l_pair:
+							c = [h, s, l]
+							palette.append(c)
+				#print(palette)
+				palettes.append(palette)
 	return palettes
 
 
@@ -52,4 +66,4 @@ jo["palettes"] = pals
 with open("data/complementary.json", "w") as f:
 	json.dump(jo, f)
 
-
+print(f"Produced {len(palettes)} palettes.")

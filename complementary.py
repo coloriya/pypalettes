@@ -64,4 +64,4 @@ jo["palettes"] = palettes
 with open("data/complementary.json", "w") as f:
 	json.dump(jo, f)
 
-print(f"Produced {len(palettes)} palettes.")
+print(f"Produced {len(palettes)} complementary palettes.")

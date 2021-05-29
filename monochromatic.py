@@ -4,8 +4,8 @@ import math
 
 from pypalettes.color import PyColor
 
-saturations = [40, 50, 60, 70, 80, 90, 100]
-lightnesses = [20, 30, 40, 50, 60]
+saturations = [90, 80, 70, 60, 50, 40]
+lightnesses = [60, 50, 40, 30, 20]
 
 palettes = []
 index = 1
@@ -33,4 +33,4 @@ jo["palettes"] = palettes
 with open("data/monochromatic.json", "w") as f:
 	json.dump(jo, f)
 
-print(f"Produced {len(palettes)} palettes.")
+print(f"Produced {len(palettes)} monochromatic palettes.")

@@ -37,7 +37,7 @@ for h1 in range(0, 360, 10):
 
 jo = {}
 jo["palettes"] = palettes
-with open("data/analogous-quad.json", "w") as f:
+with open("data/analogous_quad.json", "w") as f:
 	json.dump(jo, f)
 
 print(f"Produced {len(palettes)} analogous-quad palettes.")

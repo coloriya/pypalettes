@@ -41,4 +41,4 @@ jo["palettes"] = palettes
 with open("data/split_complementary.json", "w") as f:
 	json.dump(jo, f)
 
-print(f"Produced {len(palettes)} palettes.")
+print(f"Produced {len(palettes)} split-complementary palettes.")

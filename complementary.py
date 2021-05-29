@@ -40,10 +40,14 @@ def get_ngon_palettes(n):
 			for l_pair in l_pairs:
 				palette = {}
 				palette["id"] = index
+				palette["hues"] = []
+				palette["saturations"] = s_pair
+				palette["lightnesses"] = l_pair
 				palette["colors"] = []
 				palette["type"] = palette_types[n]
 				for color_index in range(0, n):
 					h = int(base_hue + (jump * color_index))
+					palette["hues"].append(h)
 					for s in s_pair:
 						for l in l_pair:
 							color = PyColor(h, s, l)

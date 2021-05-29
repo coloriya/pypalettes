@@ -1,9 +1,7 @@
 
-import colorsys
 import json
 
-def hsl_to_rgb(h, s, l):
-	return colorsys.hls_to_rgb(h, l, s)
+from pypalettes.color import PyColor
 
 s_pairs = [
 	[0.4, 0.6],
@@ -51,16 +49,12 @@ for palette in palettes:
 	pal["id"] = index
 	pal["colors"] = []
 	for hsl_color in palette:
-		color = {}
 		h = int(hsl_color[0] * 360)
 		s = int(hsl_color[1] * 100)
 		l = int(hsl_color[2] * 100)
-		color["hsl"] = [h, s, l]
-		rgb = hsl_to_rgb(*hsl_color)
-		rgb = [int(e * 256) for e in rgb]
-		color["rgb"] = rgb
-		color["hex"] = '#%02x%02x%02x' % (rgb[0], rgb[1], rgb[2])
-		pal["colors"].append(color)
+		#color = PyColor(h, s, l)
+		color = PyColor(h, s, l)
+		pal["colors"].append(color.asObject())
 	pals.append(pal)
 	index += 1
 

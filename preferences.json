@@ -1,0 +1,11 @@
+{
+	"palette_json_names": [
+		"monochromatic.json",
+		"rectangular.json",
+		"complementary.json",
+		"split_complementary.json",
+		"analogous.json",
+		"analogous_triad.json",
+		"analogous-quad.json"
+	]
+}

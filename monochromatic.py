@@ -17,6 +17,7 @@ for hue in range(0, 360, 5):
 	palette["saturations"] = saturations
 	palette["lightnesses"] = lightnesses
 	palette["color_group_length"] = len(lightnesses)
+	palette["n"] = 1
 	palette["colors"] = []
 
 	for saturation in saturations:

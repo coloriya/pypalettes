@@ -14,10 +14,11 @@ for h1 in range(0, 360, 10):
 	for gap in gaps:
 		h2 = (h1 + gap) % 360
 		h3 = (h2 + gap) % 360
-		hues = [h1, h2, h3]
+		h4 = (h3 + gap) % 360
+		hues = [h1, h2, h3, h4]
 		palette = {}
 		palette["id"] = index
-		palette["type"] = "analogous-triad"
+		palette["type"] = "analogous-quad"
 		palette["hues"] = hues
 		palette["saturations"] = saturations
 		palette["lightnesses"] = lightnesses
@@ -36,7 +37,7 @@ for h1 in range(0, 360, 10):
 
 jo = {}
 jo["palettes"] = palettes
-with open("data/analogous_triad.json", "w") as f:
+with open("data/analogous-quad.json", "w") as f:
 	json.dump(jo, f)
 
-print(f"Produced {len(palettes)} analogous-triad palettes.")
+print(f"Produced {len(palettes)} analogous-quad palettes.")

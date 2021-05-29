@@ -7,21 +7,20 @@ from pypalettes.color import PyColor
 palette_types = [
 	None, None, "complementary",
 	"triadic", "tetradic",
-	"pentagonal", "hexagonal",
-	None, None, None, None
+	"pentagonal", "hexagonal"
 ]
 
 s_pairs = [
-	[30, 70],
-	[40, 80],
-	[50, 90],
-	[55, 85],
-	[65, 95]
+	[70, 30],
+	[80, 40],
+	[90, 50],
+	[85, 55],
+	[95, 65]
 ]
 
 l_pairs = [
-	[20, 40, 60],
-	[10, 30, 50]
+	[60, 40, 20],
+	[50, 30, 10]
 ]
 
 
@@ -33,7 +32,7 @@ def get_ngon_palettes(n):
 	max_base_hue = int(360 / n)
 	jump = int(360 / n) # jump between adjacent colors
 	step = 10 # a new palette every 10 degrees
-	number_of_hues = math.ceil(max_base_hue / step)
+	number_of_hues = int(max_base_hue / step)
 
 	for x in range(0, number_of_hues):
 		base_hue = x * step
@@ -55,7 +54,7 @@ def get_ngon_palettes(n):
 
 
 palettes = []
-for x in range(2, 11):
+for x in range(2, 7):
 	palettes += get_ngon_palettes(x)
 
 

@@ -23,7 +23,7 @@ for h1 in range(0, 360, 10):
 		palette["hues"] = hues
 		palette["saturations"] = saturations
 		palette["lightnesses"] = lightnesses
-		palette["color_group_length"] = len(lightnesses) * len(saturations)
+		palette["color_group_length"] = 6
 		palette["colors"] = []
 
 		for hue in hues:

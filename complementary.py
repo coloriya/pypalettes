@@ -43,7 +43,7 @@ def get_ngon_palettes(n):
 				palette["hues"] = []
 				palette["saturations"] = s_pair
 				palette["lightnesses"] = l_pair
-				palette["color_group_length"] = len(s_pair) * len(l_pair)
+				palette["color_group_length"] = 6
 				palette["colors"] = []
 				palette["type"] = palette_types[n]
 				for color_index in range(0, n):

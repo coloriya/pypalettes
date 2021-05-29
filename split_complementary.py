@@ -6,7 +6,7 @@ from pypalettes.color import PyColor
 
 saturations = [95, 75, 55, 35]
 lightnesses = [60, 40, 20]
-gaps = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+gaps = [15, 25, 35, 45, 55]
 
 palettes = []
 index = 1

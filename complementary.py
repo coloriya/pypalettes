@@ -1,65 +1,67 @@
 
 import json
+import math
 
 from pypalettes.color import PyColor
 
+palette_types = [
+	None, None, "complementary",
+	"triadic", "tetradic",
+	"pentagonal", "hexagonal",
+	None, None, None, None
+]
+
 s_pairs = [
-	[0.4, 0.6],
-	[0.6, 0.8],
-	[0.8, 0.4]
+	[30, 70],
+	[40, 80],
+	[50, 90],
+	[55, 85],
+	[65, 95]
 ]
 
 l_pairs = [
-	[0.2, 0.4],
-	[0.4, 0.6],
-	[0.6, 0.2]
+	[20, 40, 60],
+	[10, 30, 50]
 ]
 
-def get_ngon_palettes(n):
-	palettes = []
-	max_base_hue = 360 / n
-	jump = 360 / n # jump between adjacent colors
-	step = 10 # a new palette every 10 degrees
 
-	for x in range(0, int(max_base_hue / step)):
+
+index = 1
+def get_ngon_palettes(n):
+	global index
+	palettes = []
+	max_base_hue = int(360 / n)
+	jump = int(360 / n) # jump between adjacent colors
+	step = 10 # a new palette every 10 degrees
+	number_of_hues = math.ceil(max_base_hue / step)
+
+	for x in range(0, number_of_hues):
 		base_hue = x * step
 		for s_pair in s_pairs:
 			for l_pair in l_pairs:
-				palette = []
+				palette = {}
+				palette["id"] = index
+				palette["colors"] = []
+				palette["type"] = palette_types[n]
 				for color_index in range(0, n):
-					hue = base_hue + (jump * color_index)
-					h = round(hue/360, 4)
+					h = int(base_hue + (jump * color_index))
 					for s in s_pair:
 						for l in l_pair:
-							c = [h, s, l]
-							palette.append(c)
-				#print(palette)
+							color = PyColor(h, s, l)
+							palette["colors"].append(color.asObject())
 				palettes.append(palette)
+				index += 1
 	return palettes
 
 
 palettes = []
-for x in range(2, 7):
+for x in range(2, 11):
 	palettes += get_ngon_palettes(x)
 
-pals = []
-index = 1
-for palette in palettes:
-	pal = {}
-	pal["id"] = index
-	pal["colors"] = []
-	for hsl_color in palette:
-		h = int(hsl_color[0] * 360)
-		s = int(hsl_color[1] * 100)
-		l = int(hsl_color[2] * 100)
-		#color = PyColor(h, s, l)
-		color = PyColor(h, s, l)
-		pal["colors"].append(color.asObject())
-	pals.append(pal)
-	index += 1
+
 
 jo = {}
-jo["palettes"] = pals
+jo["palettes"] = palettes
 with open("data/complementary.json", "w") as f:
 	json.dump(jo, f)
 

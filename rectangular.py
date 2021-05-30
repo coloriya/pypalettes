@@ -6,7 +6,7 @@ from pypalettes.color import PyColor
 
 saturations = [35, 55, 75, 95]
 lightnesses = [20, 40, 60]
-gaps = [15, 25, 35, 45, 55, 65, 75, 85]
+gaps = [30, 40, 50, 60, 70, 80, 100, 110, 120, 130, 140, 150]
 
 palettes = []
 index = 1
@@ -16,8 +16,8 @@ for h1 in range(0, 170, 10):
 		if h2 >= 180:
 			break
 
-		h3 = 360 - h2
-		h4 = 360 - h1
+		h3 = 180 + h1
+		h4 = 180 + h2
 		hues = [h1, h2, h3, h4]
 		palette = {}
 		palette["id"] = index
